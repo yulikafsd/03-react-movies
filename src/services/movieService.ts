@@ -40,9 +40,8 @@ export default async function fetchMovies(newQuery: string): Promise<Movie[]> {
         return data.results;
     } catch (error) {
         if (axios.isAxiosError<ApiErrorResponse>(error)) {
-            console.error('Axios status code:', error.response?.status);
             console.error(
-                'API error message:',
+                'Axios message:',
                 error.response?.data.status_message,
             );
         } else {
