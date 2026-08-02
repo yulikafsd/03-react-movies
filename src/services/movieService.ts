@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { type Movie } from '../types/movies';
+import { type Movie } from '../types/movie';
 
 interface FetchMoviesResponse {
     page: number;
@@ -14,7 +14,7 @@ interface ApiErrorResponse {
     success: boolean;
 }
 
-const myKey = import.meta.env.VITE_API_KEY;
+const myKey = import.meta.env.VITE_TMDB_TOKEN;
 
 const tmdbClient = axios.create({
     baseURL: 'https://api.themoviedb.org/3',

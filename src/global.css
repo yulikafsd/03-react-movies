@@ -1,11 +1,9 @@
-/* 1. Базовые настройки box-sizing для всех элементов */
 *,
 *::before,
 *::after {
     box-sizing: border-box;
 }
 
-/* 2. Сброс внешних отступов у основных элементов */
 body,
 h1,
 h2,
@@ -21,7 +19,6 @@ dd {
     margin: 0;
 }
 
-/* 3. Настройка body: шрифты, сглаживание и минимальная высота */
 body {
     min-height: 100vh;
     font-family:
@@ -39,7 +36,6 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
-/* 4. Сброс списков */
 ul,
 ol {
     margin: 0;
@@ -47,7 +43,6 @@ ol {
     list-style: none;
 }
 
-/* 5. Изображения и медиа-элементы */
 img,
 picture,
 video,
@@ -58,13 +53,11 @@ svg {
     height: auto;
 }
 
-/* 6. Ссылки */
 a {
     color: inherit;
     text-decoration: none;
 }
 
-/* 7. Элементы форм и кнопки */
 input,
 button,
 textarea,
@@ -80,7 +73,6 @@ button {
     cursor: pointer;
 }
 
-/* 8. Отключение анимаций для пользователей с чувствительностью к движению */
 @media (prefers-reduced-motion: reduce) {
     *,
     *::before,

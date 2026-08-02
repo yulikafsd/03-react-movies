@@ -1,9 +1,9 @@
 import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import styles from './MovieModal.module.css';
-import { type Movie } from '../../types/movies';
+import { type Movie } from '../../types/movie';
 
-interface ModalProps {
+interface MovieModalProps {
     onClose: () => void;
     movie: Movie;
 }
@@ -11,7 +11,7 @@ interface ModalProps {
 const NO_IMAGE_PLACEHOLDER =
     'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="500" height="750" viewBox="0 0 500 750"><rect width="100%" height="100%" fill="%23cccccc"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-family="sans-serif" font-size="30" fill="%23666666">No Image</text></svg>';
 
-export default function Modal({ onClose, movie }: ModalProps) {
+export default function Modal({ onClose, movie }: MovieModalProps) {
     const handleBackdropClick = (event: React.MouseEvent<HTMLDivElement>) => {
         if (event.target === event.currentTarget) {
             onClose();
@@ -51,8 +51,8 @@ export default function Modal({ onClose, movie }: ModalProps) {
                 </button>
                 <img
                     src={
-                        movie.poster_path
-                            ? `https://image.tmdb.org/t/p/w500${movie.backdrop_path}`
+                        movie.backdrop_path
+                            ? `https://image.tmdb.org/t/p/original${movie.backdrop_path}`
                             : NO_IMAGE_PLACEHOLDER
                     }
                     alt={movie.title}
@@ -65,7 +65,8 @@ export default function Modal({ onClose, movie }: ModalProps) {
                         <strong>Release Date:</strong> {movie.release_date}
                     </p>
                     <p>
-                        <strong>Rating:</strong> {movie.vote_average / 10}
+                        <strong>Rating:</strong> {movie.vote_average.toFixed(1)}
+                        /10
                     </p>
                 </div>
             </div>

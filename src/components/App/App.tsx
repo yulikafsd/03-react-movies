@@ -1,23 +1,26 @@
+/* Libs */
 import { useState, useEffect } from 'react';
 import toast, { Toaster } from 'react-hot-toast';
-import styles from './App.module.css';
+
+/* Components */
 import SearchBar from '../SearchBar/SearchBar';
 import Loader from '../Loader/Loader';
 import MovieGrid from '../MovieGrid/MovieGrid';
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
 import MovieModal from '../MovieModal/MovieModal';
-import { type Movie } from '../../types/movies';
+
+/* Types and services */
+import { type Movie } from '../../types/movie';
 import fetchMovies from '../../services/movieService';
+
+/* Styles */
+import styles from './App.module.css';
 
 function App() {
     const [movies, setMovies] = useState<Movie[]>([]);
     const [isLoading, setIsLoading] = useState(false);
     const [isError, setIsError] = useState(false);
     const [selectedMovie, setSelectedMovie] = useState<Movie | null>(null);
-
-    useEffect(() => {
-        console.log(movies);
-    }, [movies]);
 
     const handleSearch = async (query: string) => {
         // Reset isError
@@ -50,7 +53,6 @@ function App() {
 
             //Show ErrorMessage
             setIsError(true);
-            console.log(error);
         } finally {
             // Hide loader
             setIsLoading(false);
