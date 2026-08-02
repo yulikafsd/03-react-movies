@@ -1,12 +1,17 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import toast, { Toaster } from 'react-hot-toast';
 // import css from './App.module.css'
 import { type Movie } from '../../types/movies';
 import SearchBar from '../SearchBar/SearchBar';
+import MovieGrid from '../MovieGrid/MovieGrid';
 import fetchMovies from '../../services/movieService';
 
 function App() {
     const [movies, setMovies] = useState<Movie[]>([]);
+
+    useEffect(() => {
+        console.log(movies);
+    }, [movies]);
 
     const handleSearch = async (query: string) => {
         // Clear previous search results
@@ -32,9 +37,14 @@ function App() {
         }
     };
 
+    const handleSelect = () => {};
+
     return (
         <>
             <SearchBar onSubmit={handleSearch} />
+            {movies.length > 0 && (
+                <MovieGrid onSelect={handleSelect} movies={movies} />
+            )}
             <Toaster position="top-center" />
         </>
     );
